@@ -37,4 +37,5 @@ out/
 .vscode/
 
 ### application.yml ###
-/src/main/resources/application.yml
+/Java-Module/src/main/resources/application.yml
+/Kotlin-Module/src/main/resources/application.yml

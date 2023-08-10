@@ -1,13 +1,13 @@
-package com.sim.springkotlin
+package com.sim.kotlin
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class SpringKotlinApplicationTests {
+class KotlinApplicationTests {
 
-	@Test
-	fun contextLoads() {
-	}
+    @Test
+    fun contextLoads() {
+    }
 
 }
