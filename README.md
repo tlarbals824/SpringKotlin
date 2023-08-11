@@ -2,7 +2,7 @@
 
 ## DB
 
-<img src="db.png">
+<img src="db.png" width="500">
 
 ## Service Diagram
 
