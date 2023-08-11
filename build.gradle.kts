@@ -33,6 +33,12 @@ allprojects{
 	}
 }
 
+configurations {
+	compileOnly {
+		annotationProcessor
+	}
+}
+
 subprojects{
 	apply(plugin = "org.springframework.boot")
 	apply(plugin = "io.spring.dependency-management")
@@ -48,5 +54,8 @@ subprojects{
 		implementation("org.jetbrains.kotlin:kotlin-reflect")
 		runtimeOnly("com.mysql:mysql-connector-j")
 		testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+		compileOnly ("org.projectlombok:lombok")
+		annotationProcessor ("org.projectlombok:lombok")
 	}
 }
