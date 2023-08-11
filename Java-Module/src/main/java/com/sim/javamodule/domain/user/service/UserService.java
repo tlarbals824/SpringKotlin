@@ -1,5 +1,6 @@
 package com.sim.javamodule.domain.user.service;
 
+import com.sim.javamodule.common.util.OptionalUtils;
 import com.sim.javamodule.domain.user.domain.User;
 import com.sim.javamodule.domain.user.domain.UserRepository;
 import com.sim.javamodule.domain.user.service.dto.UserCreateRequest;
@@ -34,16 +35,20 @@ public class UserService {
     }
 
     public User findByUsername(String username) {
-        return findUser(username, userRepository::findByUsername);
+        return findUser(userRepository::findByUsername, username);
     }
 
     public User findById(Long userId){
-        return findUser(userId, userRepository::findById);
+        return findUser(userRepository::findById, userId);
     }
 
-    private <T> User findUser(T specificationData, Function<T, Optional<User>> findMethod){
-        return findMethod.apply(specificationData)
-            .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 사용자입니다."));
+//    private <T> User findUser(T specificationData, Function<T, Optional<User>> findMethod){
+//        return findMethod.apply(specificationData)
+//            .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 사용자입니다."));
+//    }
+
+    private <T> User findUser(Function<T, Optional<User>> findMethod, T specificationData) {
+        return OptionalUtils.findEntityOrElseThrow(findMethod, specificationData, () -> new IllegalArgumentException("존재하지 않는 사용자입니다."));
     }
 
 }

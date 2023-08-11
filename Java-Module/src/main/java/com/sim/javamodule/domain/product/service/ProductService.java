@@ -1,5 +1,6 @@
 package com.sim.javamodule.domain.product.service;
 
+import com.sim.javamodule.common.util.OptionalUtils;
 import com.sim.javamodule.domain.product.domain.Product;
 import com.sim.javamodule.domain.product.domain.ProductRepository;
 import com.sim.javamodule.domain.product.service.dto.ProductCreateRequest;
@@ -39,8 +40,7 @@ public class ProductService {
     }
 
     public Product findById(final Long id){
-        return productRepository.findProduct(id)
-            .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 상품입니다."));
+        return OptionalUtils.findEntityOrElseThrow(productRepository::findById, id, () -> new IllegalArgumentException("존재하지 않는 상품입니다."));
     }
 
     public void sellProduct(Product product, Long quantity){
