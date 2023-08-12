@@ -31,6 +31,6 @@ class KotlinUserService(
     private fun <T> findUser(
         findMethod: (T) -> User?,
         specificationData: T,
-    ) = (findMethod(specificationData) ?: IllegalArgumentException("존재하지 않는 사용자입니다.")) as User
+    ) = findMethod(specificationData) ?: throw IllegalArgumentException("존재하지 않는 사용자입니다.")
 
 }
